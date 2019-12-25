@@ -1,0 +1,19 @@
+@import "~taro-ui/dist/style/index.scss"; // 引入组件样式，仅需引入一次即可
+.home-page {
+  flex-direction: column;
+  width: 100%;
+}
+.head{
+  align-items: center;;
+}
+.nick-name{
+  padding-left: 10px;
+}
+.home-head{
+  background: $color-brand;
+  color:#fff;
+  padding: $spacing-v-md;
+  .content-inner__text{
+    color:#fff;
+  }
+}
