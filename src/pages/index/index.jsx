@@ -43,16 +43,27 @@ class Index extends Component {
   config = {
     navigationBarTitleText: '首页'
   }
+  // 跳转
+   go(path){
+    Taro.navigateTo({
+      url: path
+    })
+  }
+   // 点击grid
+  gridClick(item){
+    let path = item.path;
+    this.go(path);
+  }
   render () {
     return (
       <View className='home-page'>
         <View className='home-head'>
-          <AtGrid onClick={this.gridClick} columnNum={2} data={
+          <AtGrid onClick={this.gridClick.bind(this)} columnNum={2} data={
                 [
                   {
                     image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png',
                     value: '我要付钱',
-                    path:'/pages/payment/payment'
+                    path:'/pages/payment/index'
                   },
                   {
                     image: 'https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png',

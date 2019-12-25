@@ -1,0 +1,95 @@
+
+@import "~taro-ui/dist/style/index.scss"; // 引入组件样式，仅需引入一次即可
+.keyboard-price{
+  background-color:$color-bg;
+  display: flex;
+  overflow: hidden;
+  transition: bottom 0.3s linear;
+  height:600px;
+  position:fixed;
+  // bottom:0;
+  bottom: -100%;
+  right:0;
+  left:0;
+  transition: bottom 0.3s linear;
+  .numbers {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .item{
+      flex:1 1 33%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid $color-border-base;
+      border-top: 1px solid $color-border-base;
+      box-sizing: border-box;
+      font-weight: bold;
+      &.full{
+        flex:1 1 66%;
+      }
+    }
+  }
+
+  .btns {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .item{
+      flex:1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  button {
+    float: left;
+    width: 33.3333333333%;
+    background: none;
+    border: 0;
+    height: 62px;
+    line-height: 62px;
+    text-align: center;
+    font-size: 24px;
+    // border-right: 1px solid $color-border-base;
+    // border-top: 1px solid $color-border-base;
+  }
+
+  .full {
+    width: 66.6666666666%;
+  }
+
+  .delete-btn {
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+    height: 124px;
+    width: 100%;
+    // border-right: 1px solid $color-border-base;
+    border-top: 1px solid $color-border-base;
+    box-sizing: border-box;
+  }
+
+  .pay-btn {
+    box-sizing: border-box;
+    line-height: 1.2;
+    height: 124px;
+    background-color: $color-brand;
+    color: $color-white;
+    width: 100%;
+    border-right: 0;
+    &.disable {
+      background-color: $color-brand-light;
+    }
+  }
+  &.show {
+    bottom: 0;
+  }
+
+
+}
+

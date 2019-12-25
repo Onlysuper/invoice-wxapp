@@ -1,0 +1,51 @@
+@import "~taro-ui/dist/style/index.scss"; // 引入组件样式，仅需引入一次即可
+.price-input{
+  display: flex;
+  flex-direction: row;
+  border-radius: 3px;
+  border:1px solid  $color-border-base;
+  height: 88px;
+  line-height: 88px;
+  padding: 20px;
+  .label{
+    color: $color-grey-1;
+  }
+  .icon{
+    color: $color-grey-0;
+    margin-left: 20px;
+    margin-right: 10px;
+  }
+
+  .input-body{
+    flex: 1;
+    color: $color-grey-0;
+    position: relative;
+    display: flex;
+    line-height: 88px;
+    .cursor {
+      // position: absolute;
+      // right: 0;
+      // top: 1px;
+      height: 100%;
+      width: 1PX;
+      bottom: 1px;
+      font-size: 0;
+      overflow: hidden;
+      background-color: #000;
+      font-style: normal;
+      display: none;
+      animation: cursor 1s infinite step-start;
+      display: inline-block;
+    }
+  }
+}
+@keyframes cursor {
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
