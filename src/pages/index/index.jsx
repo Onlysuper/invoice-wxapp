@@ -10,19 +10,6 @@ import './index.scss'
 @connect(({ invoice_common }) => ({
   storeCustomer:invoice_common.storeCustomer // 商户信息
 }), {dispatchCustomer})
-// @connect(({ counter }) => ({
-//   counter
-// }), (dispatch) => ({
-//   add () {
-//     dispatch(add())
-//   },
-//   dec () {
-//     dispatch(minus())
-//   },
-//   asyncAdd () {
-//     dispatch(asyncAdd())
-//   }
-// }))
 class Index extends Component {
   constructor(){
     super(...arguments)
@@ -30,12 +17,7 @@ class Index extends Component {
       customerData:{}
     }
   }
-
-  // componentWillReceiveProps (nextProps) {
-  //   console.log(this.props, nextProps)
-
-  // }
-  componentDidMount () {
+  componentWillMount () {
     // 获取商户信息
     this.getCustomerData()
   }

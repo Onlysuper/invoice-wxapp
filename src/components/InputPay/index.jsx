@@ -5,6 +5,9 @@ import Taro, { Component } from '@tarojs/taro'
 import './index.scss'
 
 class InputPay extends Component {
+  static defaultProps = {
+    sending: false
+  }
   constructor(){
     super(...arguments)
     this.state = {
@@ -24,13 +27,14 @@ class InputPay extends Component {
     })
   }
   render(){
+    const { sending } = this.props
     return (
       <View className='price-input' >
-        <Text className='label'>{this.props.label}:</Text>
+        <Text className='label'>{this.props.label}{this.state.focus}:</Text>
         <Text className='icon'>{this.props.icon}</Text>
           <View className='input-body' onClick={this.inputFocus.bind(this)}>
             {this.props.price}
-            {(!this.props.sending)&&this.state.focus&&<Text class='cursor'></Text>}
+            {(!sending)&&this.state.focus&&<Text className='cursor'></Text>}
           </View>
       </View>
     )

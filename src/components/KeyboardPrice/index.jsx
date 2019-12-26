@@ -28,20 +28,18 @@ class KeyboardPrice extends Component {
     }
   }
   componentWillMount(){
+    // console.log('改变了')
+  }
+  componentWillReceiveProps(nextProps){
+    let getPrice = nextProps.price;
     this.setState({
-      values:String(this.props.price).split("")
+      values:String(getPrice).split("")
     })
     setTimeout(()=>{
       this.setState({
         open:true
       })
     },500)
-  }
-  componentWillReceiveProps(){
-    this.setState({
-      values:String(this.props.price).split("")
-    })
-    console.log('初始化2',this.state.values)
   }
   isMoneyRule(money) {
     if (money === '.') this.state.values.unshift("0") //处理首字母为 . 的情况 改为 0.
@@ -59,16 +57,18 @@ class KeyboardPrice extends Component {
     this.sendPrice();
   }
   numSelected(val){
-      let newValues = this.state.values;
-      let number = val;
-      if (number === "." && newValues.indexOf(number) !== -1) return;//处理有多个小数点的情况 禁止push
-      if (Number(newValues.join("") + number) > this.state.maxMoney) return;//处理最大金额 禁止push
-      if (newValues.join("") === "0") this.handleDelete();//c循环删除 同时解决输入两个0 和 0和任意数字 的情况
-      newValues.push(number);
-      this.setState({
-        values:newValues
-      })
-      this.sendPrice();
+    let newValues = this.state.values;
+    let number = val;
+    if (number === "." && newValues.indexOf(number) !== -1) return;//处理有多个小数点的情况 禁止push
+    if (Number(newValues.join("") + number) > this.state.maxMoney) return;//处理最大金额 禁止push
+    if (newValues.join("") === "0") this.handleDelete();//c循环删除 同时解决输入两个0 和 0和任意数字 的情况
+    newValues.push(number);
+    console.log('newValuespush',newValues);
+    console.log('newValues',newValues);
+    this.setState({
+      values:newValues
+    })
+    this.sendPrice();
   }
   sendPrice(){
     let money = this.state.values.join("")
@@ -81,7 +81,6 @@ class KeyboardPrice extends Component {
   render(){
     return (
     <View className={classNames('keyboard-price',(!this.props.sending)&&this.state.open&&'show')}>
-        {/* {this.state.values} */}
         <View className='numbers'>
           {
             this.state.numbers.map((item)=>{
