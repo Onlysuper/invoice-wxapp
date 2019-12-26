@@ -31,8 +31,13 @@ class Index extends Component {
     }
   }
 
-  componentWillReceiveProps (nextProps) {
-    console.log(this.props, nextProps)
+  // componentWillReceiveProps (nextProps) {
+  //   console.log(this.props, nextProps)
+
+  // }
+  componentDidMount () {
+    // 获取商户信息
+    this.getCustomerData()
   }
 
   componentWillUnmount () { }
@@ -42,6 +47,16 @@ class Index extends Component {
   componentDidHide () { }
   config = {
     navigationBarTitleText: '首页'
+  }
+   // 获取商户信息
+   getCustomerData(){
+    this.props.dispatchCustomer({
+      randomCode:'1488c58f'
+    }).then((res)=>{
+      this.setState({
+        customerData:res
+      })
+    })
   }
   // 跳转
    go(path){

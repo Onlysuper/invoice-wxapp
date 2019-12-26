@@ -6,8 +6,8 @@ import {
 } from 'taro-ui'
 import md5 from "js-md5";
 import utils from "@utils/common.js"
-// import KeyboardPrice from "@components/KeyboardPrice"
-// import InputPay from "@components/InputPay"
+import KeyboardPrice from "@components/KeyboardPrice"
+import InputPay from "@components/InputPay"
 // redux start
 import { connect } from '@tarojs/redux'
 import { dispatchCustomer,dispatchCustomerOrder }  from '@actions/invoice_common'
@@ -37,6 +37,7 @@ class Payment extends Component {
     }
   }
   componentDidMount () {
+    console.log('zzzzz');
     // 获取商户信息
     this.props.dispatchCustomer({
       randomCode:'1488c58f'
@@ -157,17 +158,17 @@ class Payment extends Component {
           </View>
           <View className='bs-text-center'>付款</View>
           <AtDivider content='PAYMENT' fontColor='#2d8cf0' lineColor='#2d8cf0' />
-          {/* <InputPay label='消费金额' icon='¥' price={this.state.price} sending={this.state.sending}></InputPay> */}
+          <InputPay label='消费金额' icon='¥' price={this.state.price} sending={this.state.sending}></InputPay>
         </View>
         <View className='bs-top-20'></View>
         <View className='body'>
-        {/* <KeyboardPrice
+        <KeyboardPrice
           price={this.state.price}
           sending={this.state.sending}
           onClickNum={this.selectedPriceNum.bind(this)}
           onConfirm={this.creatOrder.bind(this)
           }
-        ></KeyboardPrice> */}
+        ></KeyboardPrice>
         </View>
       </View>
     )
